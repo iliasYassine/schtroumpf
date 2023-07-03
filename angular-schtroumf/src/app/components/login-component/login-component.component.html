@@ -1,0 +1,23 @@
+<h1>Connexion</h1>
+
+<form (ngSubmit)="login()">
+  <div>
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="email" name="email" required>
+  </div>
+  <div>
+    <label>Mot de passe:</label>
+    <input type="password" [(ngModel)]="password" name="password" required>
+  </div>
+  <button type="submit">Se connecter</button>
+
+  <div *ngIf="isLoggedIn; else loginForm">
+    <p>Connecté !</p>
+    <!-- Ajoute ici d'autres éléments visuels pour l'utilisateur connecté -->
+  </div>
+
+  <ng-template #loginForm>
+    <!-- Formulaire de connexion ici -->
+  </ng-template>
+
+</form>

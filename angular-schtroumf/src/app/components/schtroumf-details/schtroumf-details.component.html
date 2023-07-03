@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Liste des rôles de schtroumfs</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Role du schtroumf</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let schtroumf of schtroumfData">
+        <td>{{ schtroumf.role }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="updateSchtroumf(schtroumf)">Modifier</button>
+          <button class="btn btn-danger" (click)="deleteSchtroumf(schtroumf.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Ajouter un rôle de schtroumf</h2>
+
+  <form *ngIf="!editMode" (ngSubmit)="createSchtroumf()" #schtroumfForm="ngForm">
+    <div class="form-group">
+      <label for="role">Nom</label>
+      <input type="text" class="form-control" id="role" name="role" [(ngModel)]="schtroumfData.role" required>
+    </div>
+    <button type="submit" class="btn btn-success">Créer</button>
+  </form>
+
+  <form *ngIf="editMode" (ngSubmit)="updateSchtroumfData()">
+    <div class="form-group">
+      <label for="editedRole">Nouveau rôle</label>
+      <input type="text" class="form-control" id="editedRole" name="editedRole" [(ngModel)]="editedRole" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <button class="btn btn-secondary" (click)="cancelEdit()">Annuler</button>
+  </form>

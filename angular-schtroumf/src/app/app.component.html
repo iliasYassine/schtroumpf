@@ -1,0 +1,12 @@
+
+
+<ng-container *ngIf="!isLoggedIn; else dashboard">
+
+  <app-login-component></app-login-component>
+</ng-container>
+
+<ng-template #dashboard>
+
+  <app-schtroumf-details></app-schtroumf-details>
+</ng-template>
+
